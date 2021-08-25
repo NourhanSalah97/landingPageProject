@@ -15,8 +15,10 @@
 
 /**
  * Define Global Variables
- * 
 */
+const navItems = Array.from(document.querySelectorAll('section'));
+const navBar = document.getElementById('navbar__list');
+
 
 
 /**
@@ -24,7 +26,15 @@
  * Start Helper Functions
  * 
 */
-
+function createListItem(){
+    for (item of navItems) {
+        itemName = item.getAttribute('data-nav');
+        itemLink = item.getAttribute('id');
+        listItem = document.createElement('li');
+        listItem.innerHTML = `<a class="menu__link" href='#${itemLink}'>${itemName}</a>`;
+        navBar.appendChild(listItem);
+    }
+}
 
 
 /**
@@ -34,7 +44,7 @@
 */
 
 // build the nav
-
+createListItem();
 
 // Add class 'active' to section when near top of viewport
 
