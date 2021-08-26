@@ -1,10 +1,10 @@
 # landingPageProject
 
-##Description
+## Description
 
 Responsive landing page project by Udacity
 
-##Requirements
+## Requirements
 
 1.To build a navigation bar with through javascript.
 2.To determine which section is in view port.
