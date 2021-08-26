@@ -21,45 +21,49 @@ const navBar = document.getElementById('navbar__list');
 
 
 
+
 /**
  * End Global Variables
- * Start Helper Functions
+ * Start Functions
  * 
 */
 function createListItem(){
     for (item of navItems) {
-        itemName = item.getAttribute('data-nav');
+
         itemLink = item.getAttribute('id');
+        itemName = item.getAttribute('data-nav');
+    
         listItem = document.createElement('li');
         listItem.innerHTML = `<a class="menu__link" href='#${itemLink}'>${itemName}</a>`;
         navBar.appendChild(listItem);
     }
 }
-
-
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
+//fuction to determine which item is in viewport
+ function isViewd(element){
+let itemPosition = element.getBoundingClientRect();
+return (itemPosition.top>=0);
+ }
+ //function to toggle active class
+function activeClass(){
+    for (item of navItems) {
+        if (isViewd(item)){
+            if (!item.classList.contains('your-active-class')){
+                item.classList.add('your-active-class');
+            }
+            else{
+                item.classList.remove('your-active-class');
+            }
+        }
+    }
+}
+/* End  Functions*/
+ 
 
 // build the nav
 createListItem();
 
 // Add class 'active' to section when near top of viewport
+document.addEventListener('scroll',activeClass);
 
 
-// Scroll to anchor ID using scrollTO event
 
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
